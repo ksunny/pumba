@@ -800,7 +800,7 @@ func handleSignals() {
 		log.Debug("Sending stop signal to runnung chaos commands ...")
 		gWG.Wait()
 		log.Debug("Graceful exit :-)")
-		os.Exit(1)
+		//os.Exit(1)
 	}()
 }
 

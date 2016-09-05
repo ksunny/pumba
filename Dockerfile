@@ -4,7 +4,8 @@ MAINTAINER Alexei Ledenev <alexei.led@gmail.com>
 
 LABEL com.gaiaadm.pumba=true
 
-RUN addgroup pumba && adduser -s /bin/bash -D -G pumba pumba
+#RUN addgroup pumba && adduser -s /bin/bash -D -G pumba pumba
+RUN addgroup core && adduser -s /bin/bash -D -G core core
 
 ENV GOSU_VERSION 1.9
 RUN set -x \

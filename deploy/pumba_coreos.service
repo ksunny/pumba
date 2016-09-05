@@ -14,6 +14,7 @@ TimeoutStopSec=15
 # Restart policy
 Restart=on-failure
 RestartSec=5
+User=core
 
 # Change killmode from "control-group" to "none" to let Docker remove
 # work correctly.
@@ -29,10 +30,7 @@ ExecStartPre=-/usr/bin/docker rm pumba
 
 # Pumba command: modify it to suite your needs
 # Default: randomly try to kill some container every 5 minutes
-ExecStart=/usr/bin/docker run --name pumba -h %H \
-					-v /var/run/docker.sock:/var/run/docker.sock \
-					-e COREOS_PRIVATE_IPV4=${COREOS_PRIVATE_IPV4} \
-				  gaiaadm/pumba:master --interval "5m" --random kill --signal SIGTERM
+ExecStart=/usr/bin/bash -c "sudo docker run --name pumba -d  -e HOST_IP="hostname -i" ksunny/pumba:v2 pumba --interval "30m" --random --debug kill"
 
 # Stop
 ExecStop=/usr/bin/docker stop pumba
