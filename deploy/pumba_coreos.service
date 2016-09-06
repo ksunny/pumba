@@ -30,7 +30,7 @@ ExecStartPre=-/usr/bin/docker rm pumba
 
 # Pumba command: modify it to suite your needs
 # Default: randomly try to kill some container every 5 minutes
-ExecStart=/usr/bin/bash -c "sudo docker run --name pumba -d  -e HOST_IP="hostname -i" ksunny/pumba:v2 pumba --interval "30m" --random --debug kill"
+ExecStart=/usr/bin/bash -c "docker run --name pumba -v /var/run/docker.sock:/var/run/docker.sock -e HOST_IP=`hostname -i` ksunny/pumba:v6 pumba --interval '30m' --random --debug kill"
 
 # Stop
 ExecStop=/usr/bin/docker stop pumba
