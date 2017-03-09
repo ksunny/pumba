@@ -29,4 +29,6 @@ COPY docker_entrypoint.sh /
 RUN chmod +x /docker_entrypoint.sh
 
 ENTRYPOINT ["/docker_entrypoint.sh"]
-CMD ["pumba", "--help"]
+CMD ["pumba", "--help"]a
+
+#Ashish
